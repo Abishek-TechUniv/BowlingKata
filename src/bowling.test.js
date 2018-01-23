@@ -141,5 +141,18 @@ describe('Invalid inputs should return an error string', () => {
       expect(bowling(input)).toBe(output);
     });
   });
+  test('If last roll not taken', () => {
+    const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10];
+    const output = 'Invalid Input';
+    expect(bowling(input)).toBe(output);
+  });
+});
+
+describe('The pins should be correctly striken down', () => {
+  test('scoring more than 10 on a frame', () => {
+    const input = [6, 8, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10, 10];
+    const output = 'Invalid Roll';
+    expect(bowling(input)).toBe(output);
+  });
 });
 
