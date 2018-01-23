@@ -26,8 +26,24 @@ describe('The player has at least one strike in the match', () => {
     const output = 117;
     expect(bowling(input)).toBe(output);
   });
+
+  test('Every frame except the last one is a strike', () => {
+    const input = [10, 10, 10, 10, 10, 10, 10, 10, 10, 6, 3];
+    const output = 264;
+    expect(bowling(input)).toBe(output);
+  });
 });
 
 describe('The player has a special last frame', () => {
+  test('Ever frame is a strike', () => {
+    const input = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    const output = 300;
+    expect(bowling(input)).toBe(output);
+  });
 
+  test('The last frame is a strike, the fill frame is a spare', () => {
+    const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 6, 4];
+    const output = 101;
+    expect(bowling(input)).toBe(output);
+  });
 });
