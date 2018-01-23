@@ -34,6 +34,18 @@ describe('The player has at least one strike in the match', () => {
   });
 });
 
+describe('The player has one or more spares', () => {
+  test('Every frame except the last one is a spare', () => {
+    const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 3];
+    const output = 145;
+    expect(bowling(input)).toBe(output);
+  });
+});
+
+describe('The player has a mix of spares and strikes', () => {
+
+});
+
 describe('The player has a special last frame', () => {
   test('Ever frame is a strike', () => {
     const input = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];

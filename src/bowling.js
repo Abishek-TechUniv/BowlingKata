@@ -10,6 +10,10 @@ function bowling(frameArray) {
       frame += 1;
       score += element + frameArray[index + 1] + frameArray[index + 2];
       if (frame === 10) return score;
+    } else if (element + prev === 10 && flag) {
+      if (flag) frame += 1;
+      flag = !flag;
+      score += element + frameArray[index + 1];
     } else {
       if (flag) frame += 1;
       flag = !flag;
