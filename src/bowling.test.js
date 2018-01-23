@@ -20,6 +20,12 @@ describe('The player has at least one strike in the match', () => {
     const output = 100;
     expect(bowling(input)).toBe(output);
   });
+
+  test('The first frame is a strike and the next one is also a strike', () => {
+    const input = [10, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 117;
+    expect(bowling(input)).toBe(output);
+  });
 });
 
 describe('The player has a special last frame', () => {
