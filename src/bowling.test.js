@@ -35,6 +35,27 @@ describe('The player has at least one strike in the match', () => {
 });
 
 describe('The player has one or more spares', () => {
+  test('The first frame is a spare and the next is open', () => {
+    const input = [5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 97;
+    expect(bowling(input)).toBe(output);
+  });
+
+  describe('Every frame is a spare and the special ball', () => {
+    test('is a strike', () => {
+      const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10];
+      const output = 155;
+      expect(bowling(input)).toBe(output);
+    });
+
+    test('is not a strike', () => {
+      const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+      const output = 150;
+      expect(bowling(input)).toBe(output);
+    });
+  });
+
+
   test('Every frame except the last one is a spare', () => {
     const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 3];
     const output = 145;
@@ -43,7 +64,29 @@ describe('The player has one or more spares', () => {
 });
 
 describe('The player has a mix of spares and strikes', () => {
+  test('Strike follwed by a spare', () => {
+    const input = [6, 3, 10, 5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 108;
+    expect(bowling(input)).toBe(output);
+  });
 
+  test('spare followed by a strike', () => {
+    const input = [5, 5, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 111;
+    expect(bowling(input)).toBe(output);
+  });
+
+  test('two spares and a strike', () => {
+    const input = [5, 5, 5, 5, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 117;
+    expect(bowling(input)).toBe(output);
+  });
+
+  test('two strikes and a spare', () => {
+    const input = [10, 10, 5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 124;
+    expect(bowling(input)).toBe(output);
+  });
 });
 
 describe('The player has a special last frame', () => {

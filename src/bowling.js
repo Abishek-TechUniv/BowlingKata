@@ -5,14 +5,13 @@ function bowling(frameArray) {
   for (let index = 0; index < frameArray.length; index += 1) {
     const element = frameArray[index];
     const prev = frameArray[index - 1];
-
+    if (frame === 10) return score;
     if (element === 10) {
       frame += 1;
       score += element + frameArray[index + 1] + frameArray[index + 2];
-      if (frame === 10) return score;
     } else if (element + prev === 10 && flag) {
-      if (flag) frame += 1;
-      flag = !flag;
+      frame += 1;
+      flag = false;
       score += element + frameArray[index + 1];
     } else {
       if (flag) frame += 1;
