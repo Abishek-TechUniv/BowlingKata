@@ -2,7 +2,7 @@ const bowling = require('./bowling');
 
 describe('The player\'s pins knocked in each frame is input as an array', () => {
   test('Every time no pin knocked down', () => {
-    const input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const output = 0;
     expect(bowling(input)).toBe(output);
   });
@@ -102,3 +102,44 @@ describe('The player has a special last frame', () => {
     expect(bowling(input)).toBe(output);
   });
 });
+
+describe('Invalid inputs should return an error string', () => {
+  test('less than 10 throws', () => {
+    const input = [10, 10, 10, 10, 10, 10, 10, 10];
+    const output = 'Invalid Input';
+    expect(bowling(input)).toBe(output);
+  });
+
+  test('more than than 21 throws', () => {
+    const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 5, 5, 3];
+    const output = 'Invalid Input';
+    expect(bowling(input)).toBe(output);
+  });
+
+  test('frames more than 10', () => {
+    const input = [10, 10, 10, 10, 10, 10, 10, 10, 6, 3, 6, 3, 7, 2];
+    const output = 'Invalid Input';
+    expect(bowling(input)).toBe(output);
+  });
+
+  test('frames less than 10', () => {
+    const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 'Invalid Input';
+    expect(bowling(input)).toBe(output);
+  });
+
+  describe('Last frame should get extra balls', () => {
+    test('one extra ball', () => {
+      const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 5, 5, 10, 1];
+      const output = 'Invalid Input';
+      expect(bowling(input)).toBe(output);
+    });
+
+    test('two extra balls', () => {
+      const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10, 10, 5];
+      const output = 'Invalid Input';
+      expect(bowling(input)).toBe(output);
+    });
+  });
+});
+
