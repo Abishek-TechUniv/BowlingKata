@@ -6,5 +6,11 @@ describe('The player\'s pins knocked in each frame is input as an array', () => 
     const output = 0;
     expect(bowling(input)).toBe(output);
   });
+
+  test('There are no strikes or spares', () => {
+    const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 90;
+    expect(bowling(input)).toBe(output);
+  });
 });
 
