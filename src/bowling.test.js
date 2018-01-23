@@ -14,3 +14,14 @@ describe('The player\'s pins knocked in each frame is input as an array', () => 
   });
 });
 
+describe('The player has at least one strike in the match', () => {
+  test('The first frame is a strike and the next is open', () => {
+    const input = [10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
+    const output = 100;
+    expect(bowling(input)).toBe(output);
+  });
+});
+
+describe('The player has a special last frame', () => {
+
+});
