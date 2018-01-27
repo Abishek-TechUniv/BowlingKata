@@ -1,13 +1,13 @@
 const Bowling = require('./bowling');
 
 describe('The player\'s pins knocked in each frame is input as an array', () => {
-  test('Every time no pin knocked down', () => {
+  it('Every time no pin knocked down', () => {
     const input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const output = 0;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
-  test('There are no strikes or spares', () => {
+  it('There are no strikes or spares', () => {
     const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 90;
     const frame = new Bowling(input);
@@ -16,21 +16,21 @@ describe('The player\'s pins knocked in each frame is input as an array', () => 
 });
 
 describe('The player has at least one strike in the match', () => {
-  test('The first frame is a strike and the next is open', () => {
+  it('The first frame is a strike and the next is open', () => {
     const input = [10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 100;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('The first frame is a strike and the next one is also a strike', () => {
+  it('The first frame is a strike and the next one is also a strike', () => {
     const input = [10, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 117;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('Every frame except the last one is a strike', () => {
+  it('Every frame except the last one is a strike', () => {
     const input = [10, 10, 10, 10, 10, 10, 10, 10, 10, 6, 3];
     const output = 264;
     const frame = new Bowling(input);
@@ -39,28 +39,28 @@ describe('The player has at least one strike in the match', () => {
 });
 
 describe('The player has a mix of spares and strikes', () => {
-  test('Strike follwed by a spare', () => {
+  it('Strike follwed by a spare', () => {
     const input = [6, 3, 10, 5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 108;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('spare followed by a strike', () => {
+  it('spare followed by a strike', () => {
     const input = [5, 5, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 111;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('two spares and a strike', () => {
+  it('two spares and a strike', () => {
     const input = [5, 5, 5, 5, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 117;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('two strikes and a spare', () => {
+  it('two strikes and a spare', () => {
     const input = [10, 10, 5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 124;
     const frame = new Bowling(input);
@@ -70,7 +70,7 @@ describe('The player has a mix of spares and strikes', () => {
 
 
 describe('The player has one or more spares', () => {
-  test('The first frame is a spare and the next is open', () => {
+  it('The first frame is a spare and the next is open', () => {
     const input = [5, 5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 97;
     const frame = new Bowling(input);
@@ -78,14 +78,14 @@ describe('The player has one or more spares', () => {
   });
 
   describe('Every frame is a spare and the special ball', () => {
-    test('is a strike', () => {
+    it('is a strike', () => {
       const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10];
       const output = 155;
       const frame = new Bowling(input);
       expect(frame.score).toBe(output);
     });
 
-    test('is not a strike', () => {
+    it('is not a strike', () => {
       const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
       const output = 150;
       const frame = new Bowling(input);
@@ -94,7 +94,7 @@ describe('The player has one or more spares', () => {
   });
 
 
-  test('Every frame except the last one is a spare', () => {
+  it('Every frame except the last one is a spare', () => {
     const input = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 3];
     const output = 145;
     const frame = new Bowling(input);
@@ -103,14 +103,14 @@ describe('The player has one or more spares', () => {
 });
 
 describe('The player has a special last frame', () => {
-  test('Ever frame is a strike', () => {
+  it('Ever frame is a strike', () => {
     const input = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
     const output = 300;
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('The last frame is a strike, the fill frame is a spare', () => {
+  it('The last frame is a strike, the fill frame is a spare', () => {
     const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 6, 4];
     const output = 101;
     const frame = new Bowling(input);
@@ -119,28 +119,28 @@ describe('The player has a special last frame', () => {
 });
 
 describe('Invalid inputs should return an error string', () => {
-  test('less than 10 throws', () => {
+  it('less than 10 throws', () => {
     const input = [10, 10, 10, 10, 10, 10, 10, 10];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('more than than 21 throws', () => {
+  it('more than than 21 throws', () => {
     const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 5, 5, 3];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('frames more than 10', () => {
+  it('frames more than 10', () => {
     const input = [10, 10, 10, 10, 10, 10, 10, 10, 6, 3, 6, 3, 7, 2];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
     expect(frame.score).toBe(output);
   });
 
-  test('frames less than 10', () => {
+  it('frames less than 10', () => {
     const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
@@ -148,21 +148,21 @@ describe('Invalid inputs should return an error string', () => {
   });
 
   describe('Last frame should get extra balls', () => {
-    test('one extra ball', () => {
+    it('one extra ball', () => {
       const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 5, 5, 10, 1];
       const output = 'Invalid Input';
       const frame = new Bowling(input);
       expect(frame.score).toBe(output);
     });
 
-    test('two extra balls', () => {
+    it('two extra balls', () => {
       const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10, 10, 5];
       const output = 'Invalid Input';
       const frame = new Bowling(input);
       expect(frame.score).toBe(output);
     });
   });
-  test('If last roll not taken', () => {
+  it('If last roll not taken', () => {
     const input = [6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
@@ -171,7 +171,14 @@ describe('Invalid inputs should return an error string', () => {
 });
 
 describe('The pins should be correctly striken down', () => {
-  test('scoring more than 10 on a frame', () => {
+  it('scoring in negatives should throw error', () => {
+    const input = [6, -5, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10, 10];
+    const output = 'Invalid Input';
+    const frame = new Bowling(input);
+    expect(frame.score).toBe(output);
+  });
+
+  it('scoring more than 10 on a frame', () => {
     const input = [6, 8, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 10, 10, 10];
     const output = 'Invalid Input';
     const frame = new Bowling(input);
